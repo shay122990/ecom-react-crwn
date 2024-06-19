@@ -1,10 +1,15 @@
 import "./index.scss";
-import CategoriesPreview from "./routes/categories-preview/categories-preview-page";
+import { Routes, Route } from "react-router-dom";
+import Navigation from "./routes/navigation/navigation.component";
+import Home from "./routes/home/home-page";
+
 const App = () => {
   return (
-    <div className="categories-container">
-      <CategoriesPreview />
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Home />} />
+      </Route>
+    </Routes>
   );
 };
 

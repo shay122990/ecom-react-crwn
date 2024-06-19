@@ -1,7 +1,11 @@
+@import 'mixins';
+
+
 body {
   margin: 0;
   font-family: "Open Sans Condensed",
     sans-serif;
+    color: rgb(54, 51, 51);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -9,4 +13,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+a{
+  text-decoration: none;
+  color: inherit;
 }
