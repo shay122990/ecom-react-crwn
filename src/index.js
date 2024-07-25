@@ -1,21 +1,20 @@
 import React from "react";
-import { render } from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-
 import App from "./App";
-import { UserProvider } from "./contexts/user.context";
 
 import "./index.scss";
+import { UserProvider } from "./contexts/user.context";
 
-const rootElement = document.getElementById("root");
+import { BrowserRouter } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+const container = document.getElementById("app");
+const root = createRoot(container);
 
-render(
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
         <App />
       </UserProvider>
     </BrowserRouter>
-  </React.StrictMode>,
-  rootElement
+  </React.StrictMode>
 );
