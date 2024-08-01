@@ -1,11 +1,13 @@
+@import '../../mixins.scss';
+
 .button-container {
   min-width: 165px;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
-  line-height: 50px;
   padding: 0 35px 0 35px;
-  font-size: 15px;
+  font-size: 12px;
+  line-height: 45px;
   background-color: black;
   color: white;
   text-transform: uppercase;
@@ -42,5 +44,17 @@
       color: white;
       border: none;
     }
+  }
+}
+
+@include respond-to('desktop'){
+  .button-container {
+    //  line-height: 50px;
+     font-size: 15px;
+    }
+}
+@include respond-to('tablet'){
+  .button-container{
+    // line-height: 45px;
   }
 }
