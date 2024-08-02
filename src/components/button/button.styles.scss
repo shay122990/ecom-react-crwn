@@ -49,12 +49,9 @@
 
 @include respond-to('desktop'){
   .button-container {
-    //  line-height: 50px;
      font-size: 15px;
     }
 }
 @include respond-to('tablet'){
-  .button-container{
-    // line-height: 45px;
-  }
+ 
 }
