@@ -1,13 +1,18 @@
+import "./product-card.styles.scss";
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/cart.context";
 import Button from "../button/button.component";
-import "./product-card.styles.scss";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
   const { addItemToCart } = useContext(CartContext);
   const [buttonText, setButtonText] = useState("Add to cart");
   const [showCheckoutButton, setShowCheckoutButton] = useState(false);
+  const navigate = useNavigate();
+  const goToCheckout = () => {
+    navigate("/shop/checkout");
+  };
 
   const addProductToCart = () => {
     addItemToCart(product);
@@ -29,10 +34,7 @@ const ProductCard = ({ product }) => {
         {buttonText}
       </Button>
       {showCheckoutButton && (
-        <Button
-          buttonType="inverted"
-          onClick={() => (window.location.href = "/checkout")}
-        >
+        <Button buttonType="inverted" onClick={goToCheckout}>
           Go to checkout
         </Button>
       )}
