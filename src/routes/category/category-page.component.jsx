@@ -23,7 +23,7 @@ const Category = () => {
   return (
     <Fragment>
       <h2 className="category-title">{category.toUpperCase()}</h2>
-      <Button buttonType="inverted" onClick={goToShop}>
+      <Button buttonType="goBack" onClick={goToShop}>
         Go Back
       </Button>
 

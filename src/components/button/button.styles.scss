@@ -31,7 +31,7 @@
     &:hover {
       background-color: #357ae8;
       border: none;
-    }
+    } 
   }
 
   &.inverted {
@@ -45,6 +45,10 @@
       border: none;
     }
   }
+
+  &.goBack{
+    margin-bottom: 10px;
+  } 
 }
 
 @include respond-to('desktop'){
