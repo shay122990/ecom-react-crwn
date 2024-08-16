@@ -1,10 +1,10 @@
 import "./sign-in-form.styles.scss";
-
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import { useNavigate } from "react-router-dom";
 
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+import MessageDisplay from "../message-display/message-display.component";
 
 import {
   signInWithGooglePopup,
@@ -18,9 +18,9 @@ const defaultFormFields = {
 
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const [isSignedIn, setIsSignedIn] = useState(false); // Track sign-in status
+  const [message, setMessage] = useState(null);
   const { email, password } = formFields;
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -29,9 +29,9 @@ const SignInForm = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithGooglePopup();
-      setIsSignedIn(true);
+      setMessage({ type: "success", text: "You have successfully signed in" });
     } catch (error) {
-      console.log(error);
+      setMessage({ type: "failure", text: "Google sign-in failed" });
     }
   };
 
@@ -40,18 +40,21 @@ const SignInForm = () => {
 
     try {
       await signInAuthUserWithEmailAndPassword(email, password);
-      setIsSignedIn(true); // Set signed-in state to true
+      setMessage({ type: "success", text: "You have successfully signed in" });
       resetFormFields();
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
-          alert("Incorrect password for email");
+          setMessage({ type: "failure", text: "Incorrect password for email" });
           break;
         case "auth/user-not-found":
-          alert("No user associated with this email");
+          setMessage({
+            type: "failure",
+            text: "No user associated with this email",
+          });
           break;
         default:
-          console.log(error);
+          setMessage({ type: "failure", text: "Sign-in failed" });
       }
     }
   };
@@ -62,17 +65,19 @@ const SignInForm = () => {
   };
 
   const handleRedirect = () => {
-    navigate("/shop"); // Redirect to shop page
+    navigate("/shop");
   };
 
   return (
     <div className="sign-up-container">
-      {isSignedIn ? (
+      {message && message.type === "success" ? (
         <div>
-          <h2>You have successfully signed in</h2>
-          <Button type="button" onClick={handleRedirect}>
-            Go to Shop
-          </Button>
+          <MessageDisplay
+            message={message.text}
+            type="success"
+            onButtonClick={handleRedirect}
+            buttonText="Go to Shop"
+          />
         </div>
       ) : (
         <div>

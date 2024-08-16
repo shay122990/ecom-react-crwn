@@ -1,9 +1,10 @@
 import "./sign-up-form.styles.scss";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import { useNavigate } from "react-router-dom";
 
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+import MessageDisplay from "../message-display/message-display.component";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -18,10 +19,9 @@ const defaultFormFields = {
 
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const [isSignedUp, setIsSignedUp] = useState(false); // Track sign-up status
+  const [message, setMessage] = useState(null);
   const { displayName, email, password, confirmPassword } = formFields;
-  const navigate = useNavigate(); // Initialize navigate
-
+  const navigate = useNavigate();
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -30,7 +30,7 @@ const SignUpForm = () => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      setMessage({ type: "failure", text: "Passwords do not match" });
       return;
     }
 
@@ -41,35 +41,42 @@ const SignUpForm = () => {
       );
 
       await createUserDocumentFromAuth(user, { displayName });
-      setIsSignedUp(true); // Set signed-up state to true
+      setMessage({ type: "success", text: "Account created successfully" });
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use");
+        setMessage({
+          type: "failure",
+          text: "Cannot create user, email already in use",
+        });
       } else {
-        console.log("User creation encountered an error", error);
+        setMessage({
+          type: "failure",
+          text: "User creation encountered an error",
+        });
       }
     }
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormFields({ ...formFields, [name]: value });
   };
 
   const handleRedirect = () => {
-    navigate("/shop"); // Redirect to shop page
+    navigate("/shop");
   };
 
   return (
     <div className="sign-up-container">
-      {isSignedUp ? (
+      {message && message.type === "success" ? (
         <div>
-          <h2>Account created successfully</h2>
-          <Button type="button" onClick={handleRedirect}>
-            Go to Shop
-          </Button>
+          <MessageDisplay
+            message={message.text}
+            type="success"
+            onButtonClick={handleRedirect}
+            buttonText="Go to Shop"
+          />
         </div>
       ) : (
         <div>
