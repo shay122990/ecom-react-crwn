@@ -14,7 +14,11 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
+        console.log("User detected after redirect:", user);
+
         createUserDocumentFromAuth(user);
+      } else {
+        console.log("No user detected.");
       }
       setCurrentUser(user);
     });

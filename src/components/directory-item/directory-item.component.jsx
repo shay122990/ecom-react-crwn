@@ -5,7 +5,7 @@ const DirectoryItem = ({ category }) => {
   const { imageUrl, title } = category;
   const navigate = useNavigate();
   const goToCategory = () => {
-    navigate(`/shop/${title.toLowerCase()}`);
+    navigate(`/shop/${title}`);
   };
   return (
     <div className="directory-item-container">
