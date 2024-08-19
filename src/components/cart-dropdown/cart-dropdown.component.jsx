@@ -12,14 +12,15 @@ const CartDropdown = () => {
   const goToCheckout = () => {
     navigate("/shop/checkout");
   };
+
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
         {cartItems.map((item) => (
-          <>
-            <CartItem key={item.id} cartItem={item} />
+          <div key={item.id} className="cart-item-container">
+            <CartItem cartItem={item} />
             <span onClick={() => clearItemFromCart(item)}>&#10006;</span>
-          </>
+          </div>
         ))}
         <div className="total">TOTAL: ${cartTotal}</div>
       </div>
@@ -27,4 +28,5 @@ const CartDropdown = () => {
     </div>
   );
 };
+
 export default CartDropdown;
