@@ -1,3 +1,5 @@
+@import '../../mixins.scss';
+
 .directory-item-container {
     min-width: 30%;
     height: 240px;
@@ -66,3 +68,9 @@
       }
     }
   }
+
+  @include respond-to('tablet'){
+    .directory-item-container{
+      height: 340px;
+    }
+  }  

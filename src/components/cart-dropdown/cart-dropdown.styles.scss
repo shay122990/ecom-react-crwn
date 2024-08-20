@@ -2,8 +2,8 @@
 
 .cart-dropdown-container {
   position: absolute;
-  width: 230px;
-  height: 400px;
+  width: 240px;
+  height: 340px;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -19,10 +19,11 @@
   }
 
   .cart-items {
-    height: auto;
+    height: 340px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    
     overflow: scroll;
   }
 
@@ -30,18 +31,9 @@
     margin-top: auto;
   }
 }
-// @include respond-to('desktop'){
-//   .cart-dropdown-container {
-//     width: 240px;
-//     height: 340px;
-//     right: 40px;
 
-//     .empty-message{
-//       font-size: 18px;
-//       margin: 50px auto;
-//     }
-//     }
-// }
-// @include respond-to('tablet'){
-  
-// }
+@include respond-to('tablet'){
+  .cart-dropdown-container{
+    right: 40px;
+  }
+}
