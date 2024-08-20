@@ -1,12 +1,17 @@
 import "./cart-dropdown.styles.scss";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../store/cart/cart-selector";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../contexts/cart.context";
 import Button from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 
 const CartDropdown = () => {
-  const { cartItems, cartTotal, clearItemFromCart } = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
+
   const navigate = useNavigate();
 
   const goToCheckout = () => {
@@ -19,7 +24,6 @@ const CartDropdown = () => {
         {cartItems.map((item) => (
           <div key={item.id} className="cart-item-container">
             <CartItem cartItem={item} />
-            <span onClick={() => clearItemFromCart(item)}>&#10006;</span>
           </div>
         ))}
         <div className="total">TOTAL: ${cartTotal}</div>

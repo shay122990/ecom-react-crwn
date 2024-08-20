@@ -1,12 +1,16 @@
 import "./checkout.styles.scss";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../store/cart/cart-selector";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../contexts/cart.context";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import Button from "../../components/button/button.component";
 
 const Checkout = () => {
-  const { cartItems, cartTotal } = useContext(CartContext);
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
   const navigate = useNavigate();
   const goToShop = () => navigate("/shop/");
   return (
