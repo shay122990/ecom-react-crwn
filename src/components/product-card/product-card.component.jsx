@@ -1,16 +1,13 @@
 import "./product-card.styles.scss";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { selectCartItems } from "../../store/cart/cart-selector";
-import { addItemToCart } from "../../store/cart/cart-action";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../store/cart/cart-reducer";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/button.component";
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
   const dispatch = useDispatch();
-  const cartItems = useSelector(selectCartItems);
   const [buttonText, setButtonText] = useState("Add to cart");
   const [showCheckoutButton, setShowCheckoutButton] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +16,7 @@ const ProductCard = ({ product }) => {
   };
 
   const addProductToCart = () => {
-    dispatch(addItemToCart(cartItems, product));
+    dispatch(addItemToCart(product));
     setButtonText("Item added");
     setShowCheckoutButton(true);
     setTimeout(() => {
