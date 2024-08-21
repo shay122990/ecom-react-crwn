@@ -31,5 +31,3 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middleWares),
 });
-
-// export const persistor = persistStore(store);
