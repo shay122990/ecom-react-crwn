@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 import { getCategoriesAndDocuments } from "../../utils/firebase.utils";
 
-import { setCategories } from "../../store/categories/categories-action";
+import { setCategories } from "../../store/categories/categories-reducer";
 
 import CategoriesPreview from "../categories-preview/categories-page-preview";
 import Category from "../category/category-page.component";
@@ -20,7 +20,8 @@ const Shop = () => {
     };
 
     getCategoriesMap();
-  }, [dispatch]);
+    //eslint-disable-next-line
+  }, []);
 
   return (
     <Routes>
