@@ -12,7 +12,7 @@ const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
   const navigate = useNavigate();
-  const goToShop = () => navigate("/shop/");
+  const goToShop = () => navigate("/shop");
   return (
     <div className="checkout-container">
       <div className="checkout-header">
