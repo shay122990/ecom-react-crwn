@@ -1,8 +1,9 @@
 import "./spinner.styles.scss";
-export const Spinner = () => {
+const Spinner = () => {
   return (
     <div className="spinner-overlay">
       <div className="spinner"></div>
     </div>
   );
 };
+export default Spinner;
