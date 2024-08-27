@@ -1,9 +1,11 @@
 import "./cart-dropdown.styles.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   selectCartItems,
   selectCartTotal,
+  selectIsCartOpen,
 } from "../../store/cart/cart-selector";
+import { setIsCartOpen } from "../../store/cart/cart-reducer";
 import { useNavigate } from "react-router-dom";
 import Button from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
@@ -11,11 +13,14 @@ import CartItem from "../cart-item/cart-item.component";
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
+  const isCartOpen = useSelector(selectIsCartOpen);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const goToCheckout = () => {
     navigate("/shop/checkout");
+    dispatch(setIsCartOpen(false));
   };
 
   return (
@@ -28,7 +33,7 @@ const CartDropdown = () => {
         )}
       </div>
       <div className="total">TOTAL: ${cartTotal}</div>
-      <Button onClick={goToCheckout}>Go To Checkout</Button>
+      {isCartOpen && <Button onClick={goToCheckout}>Go To Checkout</Button>}
     </div>
   );
 };
