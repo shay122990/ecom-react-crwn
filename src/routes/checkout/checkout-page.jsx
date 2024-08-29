@@ -7,6 +7,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import Button from "../../components/button/button.component";
+import PaymentForm from "../../components/payment-form/payment-form.component";
 
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
@@ -39,6 +40,8 @@ const Checkout = () => {
         <Button onClick={goToShop}>Select More Items</Button>
         <span>TOTAL: ${cartTotal}</span>
       </div>
+
+      <PaymentForm />
     </div>
   );
 };
