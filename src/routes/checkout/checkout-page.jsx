@@ -106,17 +106,15 @@ const Checkout = () => {
         <Button onClick={goToShop}>Select More Items</Button>
         <span>TOTAL: ${cartTotal}</span>
       </div>
-      <div>
-        <PaymentForm onSuccess={handleSuccess} onError={handleError} />
-        {message && (
-          <MessageDisplay
-            message={message.text}
-            type={message.type}
-            onButtonClick={() => setMessage(null)}
-            buttonText="Close"
-          />
-        )}
-      </div>
+      <PaymentForm onSuccess={handleSuccess} onError={handleError} />
+      {message && (
+        <MessageDisplay
+          message={message.text}
+          type={message.type}
+          onButtonClick={() => setMessage(null)}
+          buttonText="Close"
+        />
+      )}
     </div>
   );
 };

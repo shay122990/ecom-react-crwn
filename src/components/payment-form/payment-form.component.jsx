@@ -53,12 +53,30 @@ const PaymentForm = ({ onSuccess, onError }) => {
       setIsProcessingPayment(false);
     }
   };
+  //   const cardElementOptions = {
+  //     style: {
+  //       base: {
+  //         width: "100%",
+  //         backgroundColor: "#000",
+  //         color: "#32325d",
+  //         fontFamily: "Arial, sans-serif",
+  //         fontSize: "16px",
+  //         "::placeholder": {
+  //           color: "#aab7c4",
+  //         },
+  //       },
+  //       invalid: {
+  //         color: "#fa755a",
+  //         iconColor: "#fa755a",
+  //       },
+  //     },
+  //   };
 
   return (
     <div className="payment-form-container">
       <form className="form-container" onSubmit={paymentHandler}>
         <h2>Credit Card Payment:</h2>
-        <CardElement />
+        <CardElement className="card" />
         <div className="payment-button">
           <Button buttonType="payment" isLoading={isProcessingPayment}>
             Pay Now

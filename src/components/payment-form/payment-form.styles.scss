@@ -1,17 +1,45 @@
-.payment-form-container{
+@import '../../mixins.scss';
+
+.payment-form-container {
     height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    .form-container{
-        height: 100px;
-        min-width: 500px;
+    width: 100%;
+  
+    .form-container {
+      width: 100%;
+      box-sizing: border-box; 
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; 
+      gap: 1rem;
+  
+      h2 {
+        font-size: 16px;
+        margin-bottom: 1rem; 
+      }
+  
+      .card {
+        width: 100%; 
+        max-width: 200px; 
+      }
+  
+      .payment-button {
+        margin-top: auto; 
+        width: 100%; 
+        display: flex;
+      }
     }
-
-    .payment-button{
-        margin-left: auto;
-        margin-top: 30px;
-    }
-}
+  }
+  @include respond-to('tablet'){
+    .payment-form-container .form-container h2 {
+        font-size: 20px;
+      }
+   
+  }
+  @include respond-to('desktop'){
+   
+    
+  }
