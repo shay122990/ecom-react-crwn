@@ -1,6 +1,7 @@
+import { useState, useEffect } from "react";
 import "./directory.styles.scss";
-
 import DirectoryItem from "../directory-item/directory-item.component";
+import Spinner from "../spinner/spinner.component";
 
 const categories = [
   {
@@ -36,11 +37,25 @@ const categories = [
 ];
 
 const Directory = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="directory-container">
-      {categories.map((category) => (
-        <DirectoryItem key={category.id} category={category} />
-      ))}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        categories.map((category) => (
+          <DirectoryItem key={category.id} category={category} />
+        ))
+      )}
     </div>
   );
 };
