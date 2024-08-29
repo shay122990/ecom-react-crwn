@@ -6,7 +6,7 @@ import { selectCurrentUser } from "../../store/user/user-selector";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Button from "../button/button.component";
 
-const PaymentForm = () => {
+const PaymentForm = ({ onSuccess, onError }) => {
   const stripe = useStripe();
   const elements = useElements();
   const amount = useSelector(selectCartTotal);
@@ -19,35 +19,38 @@ const PaymentForm = () => {
       return;
     }
     setIsProcessingPayment(true);
-    const response = await fetch("/.netlify/functions/create-payment-intent", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ amount: amount * 100 }),
-    }).then((res) => {
-      return res.json();
-    });
+    try {
+      const response = await fetch(
+        "/.netlify/functions/create-payment-intent",
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ amount: amount * 100 }),
+        }
+      ).then((res) => res.json());
 
-    const clientSecret = response.paymentIntent.client_secret;
+      const clientSecret = response.paymentIntent.client_secret;
 
-    const paymentResult = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-        billing_details: {
-          name: currentUser ? currentUser.displayName : "",
+      const paymentResult = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+          billing_details: {
+            name: currentUser ? currentUser.displayName : "",
+          },
         },
-      },
-    });
+      });
 
-    setIsProcessingPayment(false);
-
-    if (paymentResult.error) {
-      alert(paymentResult.error.message);
-    } else {
-      if (paymentResult.paymentIntent.status === "succeeded") {
-        alert("Payment Successful!");
+      if (paymentResult.error) {
+        onError(paymentResult.error.message);
+      } else if (paymentResult.paymentIntent.status === "succeeded") {
+        onSuccess("Payment Successful!");
       }
+    } catch (error) {
+      onError("An unexpected error occurred.");
+    } finally {
+      setIsProcessingPayment(false);
     }
   };
 
