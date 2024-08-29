@@ -1,4 +1,5 @@
 import "./button.styles.scss";
+import Spinner from "../spinner/spinner.component";
 
 const BUTTON_TYPE_CLASSES = {
   google: "google-sign-in",
@@ -7,13 +8,14 @@ const BUTTON_TYPE_CLASSES = {
   payment: "payment",
 };
 
-const Button = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
   return (
     <button
+      disabled={isLoading}
       className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
       {...otherProps}
     >
-      {children}
+      {isLoading ? <Spinner width="20px" height="20px" /> : children}
     </button>
   );
 };
