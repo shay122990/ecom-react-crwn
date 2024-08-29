@@ -1,4 +1,4 @@
-// import "./message-display.styles.scss";
+import "./message-display.styles.scss";
 import Button from "../button/button.component";
 
 const MessageDisplay = ({ message, type, onButtonClick, buttonText }) => {

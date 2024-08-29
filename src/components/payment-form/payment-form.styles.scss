@@ -1,7 +1,7 @@
 @import '../../mixins.scss';
 
 .payment-form-container {
-    height: 300px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,8 +22,7 @@
       }
   
       .card {
-        width: 100%; 
-        max-width: 200px; 
+        width: 80%; 
       }
   
       .payment-button {
@@ -34,12 +33,19 @@
     }
   }
   @include respond-to('tablet'){
-    .payment-form-container .form-container h2 {
-        font-size: 20px;
-      }
+    .payment-form-container {
+        height: 300px;
+        .form-container  {
+            h2{
+                font-size: 20px;
+            }
+          }
+    }
+    
+   
    
   }
-  @include respond-to('desktop'){
+//   @include respond-to('desktop'){
    
     
-  }
+//   }

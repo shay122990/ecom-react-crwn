@@ -1,0 +1,15 @@
+@import "../../mixins.scss";
+.message-display{
+    width: 100%;
+    h2{
+        font-size: 16px;
+    }
+}
+
+@include respond-to('tablet'){
+    .message-display{
+        h2{
+            font-size: 20px;
+        }
+    }
+  }
