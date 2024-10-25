@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# CRWN Clothing eCommerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **CRWN Clothing** – an eCommerce platform where users can browse by category, add or remove items from the cart, and complete purchases. Built with React, Firebase, Firestore, and Stripe, this project offers a seamless shopping experience with user authentication and data persistence.
+
+![CRWN Clothing Home Page](./src/assets/home-page.jpg)
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Project Overview
+
+CRWN Clothing is designed to simulate a real-world shopping app, with authentication for added security, category-based browsing, and a cart that persists using Redux Persist and Firestore. Users can authenticate with Firebase, store cart data, and make payments with Stripe.
+
+## Key Features
+
+- **User Authentication**: Firebase authentication, supporting email/password and Google sign-in.
+- **Firestore Data Storage**: Categories, products, and user data are stored in Firestore.
+- **Redux State Management**: Uses Redux Toolkit and `redux-persist` for managing state and ensuring data persistence.
+- **Shopping Cart**: Add, remove, and update items in the cart.
+- **Stripe Payment Integration**: Secure payment processing via Stripe.
+- **Responsive Design**: Mobile-friendly layout for a smooth shopping experience on all devices.
+
+![Product Categories](./src/assets/products.jpg)
+
+## Technologies Used
+
+### Frontend
+
+- **React** – Core library for building user interfaces
+- **React Router** – Client-side routing for seamless navigation
+- **Redux Toolkit** – State management and asynchronous actions
+- **Redux Persist** – Persistent state storage in local storage
+- **SASS** – Styling preprocessor for efficient styling
+
+### Backend & Database
+
+- **Firebase** – Backend-as-a-service for authentication and hosting
+- **Firestore** – Real-time database for storing user and product data
+
+### Payment Processing
+
+- **Stripe** – Payment processing API for handling purchases
+
+![Cart and Checkout](./src//assets/cart-checkout.jpg)
+
+## Getting Started
+
+To run this project locally, follow these steps:
+
+### Prerequisites
+
+- Node.js and npm installed
+- Firebase project configured with Firestore and Authentication
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/shay122990/ecom-react-crwn
+   ```
+2. Navigate into the project directory:
+   ```bash
+   cd crwn-clothing
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+4. Create a `.env` file in the root and add your Firebase and Stripe API keys:
+   ```env
+   REACT_APP_FIREBASE_API_KEY=your_api_key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+   REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+   REACT_APP_FIREBASE_APP_ID=your_app_id
+   REACT_APP_STRIPE_PUBLIC_KEY=your_stripe_key
+   ```
+
+### Running the Project
+
+To run the app in development mode:
+
+```bash
+npm start
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
+- **`npm start`** – Runs the app in development mode
+- **`npm run build`** – Builds the app for production
+- **`npm run test`** – Launches the test runner
+- **`npm run eject`** – Ejects the app from `react-scripts`
 
-### `npm start`
+## Folder Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `src/components`: Reusable components like buttons, form elements, and product cards.
+- `src/pages`: Main application views (e.g., Homepage, Category pages, Cart).
+- `src/firebase`: Firebase configuration and API interaction functions.
+- `src/redux`: Redux state slices and store configuration.
+- `public`: Static assets and configuration files.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Contributing
 
-### `npm test`
+Feel free to open issues and pull requests to improve this project. Follow the standard GitHub flow for contributions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## License
 
-### `npm run build`
+Distributed under the MIT License. See `LICENSE` for more information.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
