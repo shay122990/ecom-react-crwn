@@ -44,11 +44,13 @@ CRWN Clothing is designed to simulate a real-world shopping app, with authentica
 - **Firebase** – Backend-as-a-service for authentication and hosting
 - **Firestore** – Real-time database for storing user and product data
 
+  ![Authentication](./src/assets/auth.jpg)
+
 ### Payment Processing
 
 - **Stripe** – Payment processing API for handling purchases
 
-![Cart and Checkout](./src//assets/cart-checkout.jpg)
+![Cart and Checkout](./src/assets/cart-checkout.jpg)
 
 ## Getting Started
 
