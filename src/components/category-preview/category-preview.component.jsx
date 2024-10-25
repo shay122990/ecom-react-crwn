@@ -9,6 +9,13 @@ const CategoryPreview = ({ title, products }) => {
       <h2>
         <Link className="title" to={title}>
           {title.toUpperCase()}
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios-glyphs/30/chevron-right.png"
+            alt="chevron-right"
+            className="chevron-right"
+          />
         </Link>
       </h2>
       <div className="preview">
