@@ -1,5 +1,5 @@
 import "./sale-items.styles.scss";
-import Carousel from "../carousel/Carousel";
+import Carousel from "../carousel/carousel.component";
 
 export default function SaleItems() {
   return (
