@@ -33,7 +33,7 @@ const CartDropdown = () => {
         )}
       </div>
       <div className="total">TOTAL: ${cartTotal}</div>
-      {isCartOpen && <Button onClick={goToCheckout}>Go To Checkout</Button>}
+      {isCartOpen && <Button onClick={goToCheckout}>Checkout</Button>}
     </div>
   );
 };
