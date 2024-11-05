@@ -45,15 +45,20 @@ export const signInWithGoogleRedirect = () =>
 
 export const db = getFirestore();
 
-//ADDING A NEW CATEGORY TO FIRESTORE
-// export const addSaleCategoryToFirestore = async (saleItems) => {
-//   const batch = writeBatch(db);
-//   const saleCategoryRef = doc(collection(db, "categories"), "sale");
+// ADDING A NEW CATEGORY TO FIRESTORE
+export const addCategoryToFirestore = async (category) => {
+  try {
+    const categoryRef = doc(
+      collection(db, "categories"),
+      category.title.toLowerCase()
+    );
+    await setDoc(categoryRef, category);
+    console.log("Category added to Firestore:", category.title);
+  } catch (error) {
+    console.error("Error adding category to Firestore:", error);
+  }
+};
 
-//   batch.set(saleCategoryRef, { title: "Sale", items: saleItems });
-//   await batch.commit();
-//   console.log("Sale category added to Firestore");
-// };
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd,
