@@ -30,7 +30,6 @@ const Shop = () => {
     };
 
     getCategoriesMap();
-    // eslint-disable-next-line
   }, [dispatch]);
 
   return (

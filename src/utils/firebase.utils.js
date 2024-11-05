@@ -1,3 +1,5 @@
+// import SHOP_DATA from "../shop-data";
+
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -28,11 +30,11 @@ const firebaseConfig = {
   messagingSenderId: "380126156579",
   appId: "1:380126156579:web:74b3aea34035c4373dde96",
 };
-// eslint-disable-next-line
+
+// Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
-
 googleProvider.setCustomParameters({
   prompt: "select_account",
 });
@@ -45,35 +47,29 @@ export const signInWithGoogleRedirect = () =>
 
 export const db = getFirestore();
 
-// ADDING A NEW CATEGORY TO FIRESTORE
-export const addCategoryToFirestore = async (category) => {
-  try {
-    const categoryRef = doc(
-      collection(db, "categories"),
-      category.title.toLowerCase()
-    );
-    await setDoc(categoryRef, category);
-    console.log("Category added to Firestore:", category.title);
-  } catch (error) {
-    console.error("Error adding category to Firestore:", error);
-  }
-};
-
 export const addCollectionAndDocuments = async (
   collectionKey,
-  objectsToAdd,
-  field
+  objectsToAdd
 ) => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
 
   objectsToAdd.forEach((obj) => {
     const docRef = doc(collectionRef, obj.title.toLowerCase());
-    batch.set(docRef, obj);
+    batch.set(docRef, obj); // Add each object to the batch
   });
-  await batch.commit();
-  console.log("All documents added successfully!");
+
+  try {
+    await batch.commit();
+    console.log("All documents added successfully!");
+  } catch (error) {
+    console.error("Error adding documents: ", error);
+  }
 };
+
+// Call to add SHOP_DATA to the 'categories' collection
+// comment out to not trigger call, to add new category, import new data as SHOP_DATA
+// addCollectionAndDocuments("categories", SHOP_DATA);
 
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, "categories");
@@ -90,7 +86,6 @@ export const createUserDocumentFromAuth = async (
   if (!userAuth) return;
 
   const userDocRef = doc(db, "users", userAuth.uid);
-
   const userSnapshot = await getDoc(userDocRef);
 
   if (!userSnapshot.exists()) {
@@ -122,6 +117,7 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
 export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
