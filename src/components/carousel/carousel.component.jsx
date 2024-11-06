@@ -1,15 +1,27 @@
-import "./carousel.styles.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectCategories } from "./path/to/your/selectors";
+import {
+  selectCategoriesMap,
+  selectCategoriesIsLoading,
+} from "../../store/categories/categories-selector";
+import "./carousel.styles.scss";
 
 export default function Carousel() {
-  const categories = useSelector(selectCategories);
-  const saleCategories = categories.filter(
-    (category) => category.title === "Sale"
-  );
-
+  const categoriesMap = useSelector(selectCategoriesMap);
+  const isLoading = useSelector(selectCategoriesIsLoading);
+  const [saleCategories, setSaleCategories] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (categoriesMap) {
+      const saleCategory = categoriesMap["sale"];
+      if (saleCategory) {
+        setSaleCategories(saleCategory);
+      } else {
+        setSaleCategories([]);
+      }
+    }
+  }, [categoriesMap]);
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
@@ -22,6 +34,14 @@ export default function Carousel() {
       prevIndex === saleCategories.length - 1 ? 0 : prevIndex + 1
     );
   };
+
+  if (isLoading) {
+    return <p>Loading sale items...</p>;
+  }
+
+  if (saleCategories.length === 0) {
+    return <p>No sale items available.</p>;
+  }
 
   return (
     <div className="carousel">
