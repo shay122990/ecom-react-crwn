@@ -1,15 +1,17 @@
+import "./carousel.styles.scss";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   selectCategoriesMap,
   selectCategoriesIsLoading,
 } from "../../store/categories/categories-selector";
-import "./carousel.styles.scss";
 
 export default function Carousel() {
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
   const [saleCategories, setSaleCategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (categoriesMap) {
@@ -17,6 +19,10 @@ export default function Carousel() {
       setSaleCategories(saleCategory || []);
     }
   }, [categoriesMap]);
+
+  const goToSaleCategory = () => {
+    navigate("/shop/sale");
+  };
 
   if (isLoading) {
     return <p>Loading sale items...</p>;
@@ -35,6 +41,7 @@ export default function Carousel() {
               src={item.imageUrl}
               alt={item.title}
               className="carousel-img"
+              onClick={goToSaleCategory}
             />
             <div className="carousel-caption">
               <h3>{item.title}</h3>
