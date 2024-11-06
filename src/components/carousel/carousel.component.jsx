@@ -10,30 +10,13 @@ export default function Carousel() {
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
   const [saleCategories, setSaleCategories] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (categoriesMap) {
       const saleCategory = categoriesMap["sale"];
-      if (saleCategory) {
-        setSaleCategories(saleCategory);
-      } else {
-        setSaleCategories([]);
-      }
+      setSaleCategories(saleCategory || []);
     }
   }, [categoriesMap]);
-
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? saleCategories.length - 1 : prevIndex - 1
-    );
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === saleCategories.length - 1 ? 0 : prevIndex + 1
-    );
-  };
 
   if (isLoading) {
     return <p>Loading sale items...</p>;
@@ -44,33 +27,25 @@ export default function Carousel() {
   }
 
   return (
-    <div className="carousel">
-      {saleCategories.length > 0 && (
-        <div className="carousel-item">
-          <img
-            src={saleCategories[currentIndex].imageUrl}
-            alt={saleCategories[currentIndex].title}
-            className="carousel-img"
-          />
-          <div className="carousel-caption">
-            <h3>{saleCategories[currentIndex].title}</h3>
-            <p className="price">
-              <span className="previous-price">
-                ${saleCategories[currentIndex].previousPrice}
-              </span>{" "}
-              <span className="current-price">
-                ${saleCategories[currentIndex].price}
-              </span>
-            </p>
+    <div className="carousel-container">
+      <div className="carousel">
+        {saleCategories.map((item, index) => (
+          <div className="carousel-item" key={index}>
+            <img
+              src={item.imageUrl}
+              alt={item.title}
+              className="carousel-img"
+            />
+            <div className="carousel-caption">
+              <h3>{item.title}</h3>
+              <p className="price">
+                <span className="previous-price">${item.previousPrice}</span>{" "}
+                <span className="current-price">${item.price}</span>
+              </p>
+            </div>
           </div>
-        </div>
-      )}
-      <button className="carousel-arrow left" onClick={goToPrevious}>
-        &#10094;
-      </button>
-      <button className="carousel-arrow right" onClick={goToNext}>
-        &#10095;
-      </button>
+        ))}
+      </div>
     </div>
   );
 }
