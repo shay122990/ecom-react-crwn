@@ -21,6 +21,7 @@
 }
 
 .carousel-item {
+  display: inline-block;
   flex: 0 0 auto;
   width: 200px; 
   scroll-snap-align: start;
