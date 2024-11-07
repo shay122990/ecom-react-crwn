@@ -65,9 +65,4 @@
     width: auto;
   }
 }
-@include respond-to('desktop'){
-  .button-container {
-     font-size: 18px;
-     
-    }
-}
+

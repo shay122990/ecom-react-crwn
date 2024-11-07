@@ -4,31 +4,36 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 350px;
   align-items: center;
   position: relative;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  padding: 2px;
+
 
   img {
     width: 100%;
-    height: 90%;
+    height: 250px;
     object-fit: cover;
     margin-bottom: 8px;
   }
 
   button {
-    width: 100%;
+    width: 90%;
     opacity: 0.7;
     position: absolute;
     display: none; 
+    overflow: hidden;
   }
 
   
   button:first-of-type {
-    top: 200px; 
+    top: 50%; 
   }
 
   button:nth-of-type(2) {
-    top: 250px; 
+    top: 65%; 
   }
 
   &:hover {
@@ -44,25 +49,36 @@
 
   .footer {
     width: 100%;
+    height: 50px;
     display: flex;
-    justify-content: space-between;
-    font-size: 16px;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 14px;
 
     .name {
-      width: 90%;
-      margin-bottom: 15px;
+      width: 50%;
     }
 
     .price {
-      width: 10%;
+      width: 20%;
+    }
+  }
+}
+@include respond-to('tablet'){
+  .product-card-container{
+    img{
+      height: 400px;
+    }
+    button{
+      width: 98%;
+    }
+    button:first-of-type {
+      top: 60%; 
+    }
+  
+    button:nth-of-type(2) {
+      top: 72%; 
     }
   }
 }
 
-@include respond-to('desktop') {
-  .product-card-container {
-    button {
-      top: 250px; 
-    }
-  }
-}

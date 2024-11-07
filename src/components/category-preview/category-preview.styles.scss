@@ -3,7 +3,9 @@
 .category-preview-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-bottom: 30px;
+  width: 100%;
 
   .title {
     font-size: 28px;
@@ -14,9 +16,16 @@
   .preview {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
+    column-gap: 10px;
   }
 
+}
+@include respond-to('tablet'){
+  .category-preview-container{
+    .preview{
+      column-gap:46px;
+    }
+  }
 }
 @include respond-to('desktop'){
   .category-preview-container{
