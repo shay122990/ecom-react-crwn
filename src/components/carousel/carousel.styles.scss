@@ -1,29 +1,55 @@
 @import '../../mixins.scss';
 
 .carousel-container {
+  position: relative;
   overflow-x: auto;
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding: 1rem;
   width: 100%;
   max-width: 80%;
-  border: 1px solid black;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-container::before,
+.carousel-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  pointer-events: none;
+}
+
+.carousel-container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.carousel-container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
 }
 
 .carousel {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding-bottom: 20px;
-  width: 98%;
+  padding: 1rem;
+  width: 100%;
 }
 
 .carousel-item {
   display: inline-block;
   flex: 0 0 auto;
-  width: 200px; 
+  width: 200px;
   scroll-snap-align: start;
   text-align: center;
   overflow: hidden;
@@ -33,7 +59,7 @@
 
 .carousel-img {
   width: 100%;
-  height: 150px; 
+  height: 250px;
   object-fit: cover;
 }
 
@@ -63,13 +89,23 @@
   }
 }
 
-.carousel-container::-webkit-scrollbar {
-  display: none;
+.scroll-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.carousel-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.scroll-indicator.left {
+  left: 3px;
+}
+
+.scroll-indicator.right {
+  right: 3px;
 }
 
 @include respond-to('desktop') {
@@ -78,10 +114,10 @@
   }
 
   .carousel-item {
-    width: 300px; 
+    width: 300px;
   }
 
   .carousel-img {
-    height: 250px; 
+    height: 250px;
   }
 }
