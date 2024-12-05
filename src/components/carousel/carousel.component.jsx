@@ -38,7 +38,7 @@ export default function Carousel({
               onClick={handleNavigate}
             />
             <div className="carousel-caption">
-              <h3>{item.title}</h3>
+              <h3>{item.name}</h3>
               <p className="price">
                 <span className="previous-price">${item.previousPrice}</span>
                 <span className="current-price">${item.price}</span>
