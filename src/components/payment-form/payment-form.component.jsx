@@ -1,8 +1,10 @@
 import "./payment-form.styles.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { selectCartTotal } from "../../store/cart/cart-selector";
 import { selectCurrentUser } from "../../store/user/user-selector";
+import { clearCart } from "../../store/cart/cart-reducer";
+
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Button from "../button/button.component";
 
@@ -12,6 +14,7 @@ const PaymentForm = ({ onSuccess, onError }) => {
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const dispatch = useDispatch();
 
   const paymentHandler = async (e) => {
     e.preventDefault();
@@ -46,6 +49,7 @@ const PaymentForm = ({ onSuccess, onError }) => {
         onError(paymentResult.error.message);
       } else if (paymentResult.paymentIntent.status === "succeeded") {
         onSuccess("Payment Successful!");
+        dispatch(clearCart());
       }
     } catch (error) {
       onError("An unexpected error occurred.");
@@ -53,25 +57,6 @@ const PaymentForm = ({ onSuccess, onError }) => {
       setIsProcessingPayment(false);
     }
   };
-  //   const cardElementOptions = {
-  //     style: {
-  //       base: {
-  //         width: "100%",
-  //         backgroundColor: "#000",
-  //         color: "#32325d",
-  //         fontFamily: "Arial, sans-serif",
-  //         fontSize: "16px",
-  //         "::placeholder": {
-  //           color: "#aab7c4",
-  //         },
-  //       },
-  //       invalid: {
-  //         color: "#fa755a",
-  //         iconColor: "#fa755a",
-  //       },
-  //     },
-  //   };
-
   return (
     <div className="payment-form-container">
       <form className="form-container" onSubmit={paymentHandler}>
