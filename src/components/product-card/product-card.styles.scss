@@ -10,13 +10,13 @@
   margin-bottom: 1rem;
   overflow: hidden;
   padding: 2px;
+  
 
 
   img {
     width: 100%;
     height: 250px;
     object-fit: cover;
-    margin-bottom: 8px;
   }
 
   button {
@@ -64,21 +64,30 @@
     }
   }
 }
-@include respond-to('tablet'){
-  .product-card-container{
-    img{
+@include respond-to('tablet') {
+  .product-card-container {
+    img {
       height: 400px;
     }
-    button{
+    button {
       width: 98%;
     }
     button:first-of-type {
-      top: 60%; 
+      top: 60%;
     }
-  
     button:nth-of-type(2) {
-      top: 72%; 
+      top: 72%;
+    }
+
+    .footer {
+      height: 70px;
+
+      .name {
+        font-size: 20px;
+      }
+      .price {
+        font-size: 20px;
+      }
     }
   }
 }
-
