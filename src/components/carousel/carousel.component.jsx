@@ -1,35 +1,27 @@
 import "./carousel.styles.scss";
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  selectCategoriesMap,
-  selectCategoriesIsLoading,
-} from "../../store/categories/categories-selector";
 
-export default function Carousel() {
-  const categoriesMap = useSelector(selectCategoriesMap);
-  const isLoading = useSelector(selectCategoriesIsLoading);
-  const [saleCategories, setSaleCategories] = useState([]);
+export default function Carousel({
+  items,
+  isLoading,
+  fallbackText,
+  navigateTo,
+}) {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (categoriesMap) {
-      const saleCategory = categoriesMap["sale"];
-      setSaleCategories(saleCategory || []);
+  const handleNavigate = () => {
+    if (navigateTo) {
+      navigate(navigateTo);
     }
-  }, [categoriesMap]);
-
-  const goToSaleCategory = () => {
-    navigate("/shop/sale");
   };
 
   if (isLoading) {
-    return <p>Loading sale items...</p>;
+    return <p>Loading...</p>;
   }
 
-  if (saleCategories.length === 0) {
-    return <p>No sale items available.</p>;
+  if (!items || items.length === 0) {
+    return <p>{fallbackText || "No items available."}</p>;
   }
 
   return (
@@ -37,18 +29,18 @@ export default function Carousel() {
       <div className="scroll-indicator left">&lt;</div>
       <div className="scroll-indicator right">&gt;</div>
       <div className="carousel">
-        {saleCategories.map((item, index) => (
+        {items.map((item, index) => (
           <div className="carousel-item" key={index}>
             <img
               src={item.imageUrl}
               alt={item.title}
               className="carousel-img"
-              onClick={goToSaleCategory}
+              onClick={handleNavigate}
             />
             <div className="carousel-caption">
               <h3>{item.title}</h3>
               <p className="price">
-                <span className="previous-price">${item.previousPrice}</span>{" "}
+                <span className="previous-price">${item.previousPrice}</span>
                 <span className="current-price">${item.price}</span>
               </p>
             </div>
