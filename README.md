@@ -10,7 +10,8 @@ Welcome to **CRWN Clothing** – an eCommerce platform where users can browse by
 - [Key Features](#key-features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
+- [Stripe Setup](#stripe-setup)
+- [Testing Payments in Development](#testing-payments-in-development)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -94,20 +95,58 @@ To run the app in development mode:
 npm start
 ```
 
-## Available Scripts
+---
 
-- **`npm start`** – Runs the app in development mode
-- **`npm run build`** – Builds the app for production
-- **`npm run test`** – Launches the test runner
-- **`npm run eject`** – Ejects the app from `react-scripts`
+## Stripe Setup
 
-## Folder Structure
+To enable Stripe for payments:
 
-- `src/components`: Reusable components like buttons, form elements, and product cards.
-- `src/pages`: Main application views (e.g., Homepage, Category pages, Cart).
-- `src/firebase`: Firebase configuration and API interaction functions.
-- `src/redux`: Redux state slices and store configuration.
-- `public`: Static assets and configuration files.
+1. Create a Stripe account [here](https://stripe.com/).
+2. Obtain your API keys from the Stripe dashboard.
+3. Add your Stripe public key to the `.env` file:
+   ```env
+   VITE_STRIPE_PUBLIC_KEY=your-public-key
+   ```
+4. Use the `@stripe/react-stripe-js` and `@stripe/stripe-js` packages for integrating Stripe in your app.
+5. For development purposes, make sure you use default card numbers provided by Stripe (e.g., `4242424242424242`, `04/42`, `424`).
+
+---
+
+## Testing Payments in Development
+
+To test payments locally while using Netlify Functions, follow these steps:
+
+### 1. Run Netlify Functions Locally
+
+#### Install the Netlify CLI:
+
+```bash
+npm install -g netlify-cli
+```
+
+#### Log in to Netlify:
+
+```bash
+netlify login
+```
+
+#### Run the App Locally with Netlify:
+
+Navigate to your project folder and run:
+
+```bash
+netlify dev
+```
+
+This command will:
+
+- Serve your app locally.
+- Run your Netlify serverless functions in a local environment.
+- Proxy requests to `/.netlify/functions/*`.
+
+You should now be able to use the same API endpoints in your app (e.g., `/.netlify/functions/create-payment-intent`) as you would in production.
+
+---
 
 ## Contributing
 
