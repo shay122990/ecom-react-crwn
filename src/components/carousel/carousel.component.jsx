@@ -26,8 +26,6 @@ export default function Carousel({
 
   return (
     <div className="carousel-container">
-      <div className="scroll-indicator left">&lt;</div>
-      <div className="scroll-indicator right">&gt;</div>
       <div className="carousel">
         {items.map((item, index) => (
           <div className="carousel-item" key={index}>

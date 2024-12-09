@@ -2,38 +2,31 @@
 
 .carousel-container {
   position: relative;
-  overflow-x: auto;
   display: flex;
   justify-content: center;
   padding: 1rem;
   width: 100%;
   max-width: 80%;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow-x: scroll; 
+  -webkit-overflow-scrolling: touch; 
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
 }
-
 .carousel-container::-webkit-scrollbar {
-  display: none;
+  height: 8px;
 }
 
-.carousel-container::before,
-.carousel-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 40px;
-  pointer-events: none;
+.carousel-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
 }
 
-.carousel-container::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+.carousel-container::-webkit-scrollbar-thumb:hover {
+  background: #888; 
 }
 
-.carousel-container::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+.carousel-container::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .carousel {
@@ -89,30 +82,13 @@
   }
 }
 
-.scroll-indicator {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.scroll-indicator.left {
-  left: 3px;
-}
-
-.scroll-indicator.right {
-  right: 3px;
-}
-
 @include respond-to('desktop') {
   .carousel-container {
     padding: 40px;
   }
-
+  .carousel{
+    gap: 20px;
+  }
   .carousel-item {
     width: 300px;
   }
