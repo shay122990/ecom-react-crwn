@@ -33,7 +33,7 @@ export default function Carousel({
           <div className="carousel-item" key={index}>
             <img
               src={item.imageUrl}
-              alt={item.title}
+              alt={item.name || "Image"}
               className="carousel-img"
               onClick={handleNavigate}
             />
