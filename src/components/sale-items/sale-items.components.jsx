@@ -20,14 +20,24 @@ export default function SaleItems() {
   }, [categoriesMap]);
 
   return (
-    <div className="sales-container">
-      <h2>Last Chance Items</h2>
+    <section className="sales-wrapper">
+      <div className="sales-header">
+        <h2>Last Chance Deals</h2>
+      </div>
+
       <Carousel
         items={saleCategories}
         isLoading={isLoading}
         fallbackText="No sale items available."
         navigateTo="/shop/sale"
       />
-    </div>
+
+      <button
+        className="browse-sale-btn"
+        onClick={() => (window.location.href = "/shop/sale")}
+      >
+        Browse All Sale Items
+      </button>
+    </section>
   );
 }
