@@ -1,15 +1,30 @@
 @import "../../mixins.scss";
-.authentication-container {
-    display: flex;
-    width: 900px;
-    justify-content: space-between;
-    margin: 30px auto;
-    flex-direction: column;
-    gap: 80px;
-  }
 
-  @include respond-to('desktop'){
-    .authentication-container{
-        flex-direction: row;
-    }
-  } 
+.authentication-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+@include respond-to("tablet") {
+  .authentication-container {
+    padding: 3rem 2rem;
+  }
+}
+
+@include respond-to("desktop") {
+  .authentication-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
