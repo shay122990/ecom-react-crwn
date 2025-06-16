@@ -56,7 +56,11 @@
     border: 1px solid blue;
     font-size: 14px;
   } 
-
+  &.signIn-Redirect{
+    margin-top: 30px;
+    width: 100%;
+    background-color: rgb(247, 108, 108);
+  }
 }
 @include respond-to('tablet'){
   .button-container{

@@ -6,6 +6,7 @@ const BUTTON_TYPE_CLASSES = {
   inverted: "inverted",
   goBack: "goBack",
   payment: "payment",
+  signInRedirect: "signIn-Redirect",
 };
 
 const Button = ({ children, buttonType, isLoading, ...otherProps }) => {

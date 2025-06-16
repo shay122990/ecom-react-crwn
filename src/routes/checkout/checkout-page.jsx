@@ -67,7 +67,9 @@ const Checkout = () => {
       {currentUser ? (
         <PaymentForm onSuccess={handleSuccess} onError={handleError} />
       ) : (
-        <Button onClick={goToSignIn}>Sign in to proceed to payment</Button>
+        <Button buttonType="signInRedirect" onClick={goToSignIn}>
+          Sign in to proceed to payment
+        </Button>
       )}
 
       {message && (
