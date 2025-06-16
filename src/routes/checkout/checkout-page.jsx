@@ -23,7 +23,7 @@ const Checkout = () => {
   const goToShop = () => navigate("/shop");
 
   const goToSignIn = () => {
-    localStorage.setItem("redirectAfterLogin", "/checkout");
+    localStorage.setItem("redirectAfterLogin", "/shop/checkout");
     navigate("/auth");
   };
 
