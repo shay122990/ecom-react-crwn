@@ -5,6 +5,8 @@ import {
   selectCartItems,
   selectCartTotal,
 } from "../../store/cart/cart-selector";
+import { selectCurrentUser } from "../../store/user/user-selector";
+
 import { useNavigate } from "react-router-dom";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import Button from "../../components/button/button.component";
@@ -14,10 +16,16 @@ import MessageDisplay from "../../components/message-display/message-display.com
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
+  const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
   const [message, setMessage] = useState(null);
 
   const goToShop = () => navigate("/shop");
+
+  const goToSignIn = () => {
+    localStorage.setItem("redirectAfterLogin", "/checkout");
+    navigate("/auth");
+  };
 
   const handleSuccess = (message) => {
     setMessage({ type: "success", text: message });
@@ -46,14 +54,22 @@ const Checkout = () => {
           <span>Remove</span>
         </div>
       </div>
+
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
+
       <div className="total">
         <Button onClick={goToShop}>Select More Items</Button>
         <span>TOTAL: ${cartTotal}</span>
       </div>
-      <PaymentForm onSuccess={handleSuccess} onError={handleError} />
+
+      {currentUser ? (
+        <PaymentForm onSuccess={handleSuccess} onError={handleError} />
+      ) : (
+        <Button onClick={goToSignIn}>Sign in to proceed to payment</Button>
+      )}
+
       {message && (
         <MessageDisplay
           message={message.text}
@@ -65,5 +81,4 @@ const Checkout = () => {
     </div>
   );
 };
-
 export default Checkout;
