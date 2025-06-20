@@ -15,9 +15,12 @@ const persistConfig = {
 // Persisted reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const middleWares = [process.env.NODE_ENV === "development" && logger].filter(
-  Boolean
-);
+// Conditionally add logger only in development
+const middleWares = [];
+
+if (process.env.NODE_ENV === "development") {
+  middleWares.push(logger);
+}
 
 export const store = configureStore({
   reducer: persistedReducer,
