@@ -69,7 +69,7 @@ export const addCollectionAndDocuments = async (
 };
 
 // Call to add SHOP_DATA to the 'categories' collection
-// comment out to not trigger call, to add new category, import new data as SHOP_DATA
+// comment out next line to not trigger call, to add new category, import new data as SHOP_DATA
 // addCollectionAndDocuments("categories", SHOP_DATA);
 
 export const getCategoriesAndDocuments = async () => {
