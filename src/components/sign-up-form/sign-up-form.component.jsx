@@ -82,7 +82,7 @@ const SignUpForm = () => {
         <div>
           <h2>Don't have an account?</h2>
           <span>Sign up with your email and password</span>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} autoComplete="off">
             <FormInput
               label="Display Name"
               type="text"
@@ -90,7 +90,7 @@ const SignUpForm = () => {
               onChange={handleChange}
               name="displayName"
               value={displayName}
-              autoComplete="name"
+              autoComplete="off"
             />
 
             <FormInput
@@ -100,7 +100,7 @@ const SignUpForm = () => {
               onChange={handleChange}
               name="email"
               value={email}
-              autoComplete="email"
+              autoComplete="off"
             />
 
             <FormInput
@@ -110,7 +110,7 @@ const SignUpForm = () => {
               onChange={handleChange}
               name="password"
               value={password}
-              autoComplete="current-password"
+              autoComplete="new-password"
             />
 
             <FormInput
@@ -120,7 +120,7 @@ const SignUpForm = () => {
               onChange={handleChange}
               name="confirmPassword"
               value={confirmPassword}
-              autoComplete="current-password"
+              autoComplete="new-password"
             />
             <Button type="submit">Sign Up</Button>
           </form>
