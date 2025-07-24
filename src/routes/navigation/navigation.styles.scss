@@ -24,6 +24,7 @@
       cursor: pointer;
       font-size: 14px;
       text-wrap: nowrap;
+      padding: 8px; 
       
       &:hover{
         color: white;
@@ -39,11 +40,8 @@
     .logo-container .logo {
       height: 40px;
     }
-    .nav-links-container .nav-link {
-      font-size: 18px;
-      gap:10px;
-      padding: 10px;
-      // padding-left: 30px;
-    }
+    // .nav-links-container .nav-link{
+    //   padding: 10px;
+    // }
   }
 }
