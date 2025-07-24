@@ -2,7 +2,7 @@
 
 .sales-wrapper {
   width: 100%;
-  padding: 2rem 1rem;
+  padding: 0 1rem 0 1rem;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -13,10 +13,11 @@
     margin-bottom: 1.5rem;
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: #b30000;
       text-transform: uppercase;
       margin-bottom: 0.25rem;
+      margin-top:0;
     }
 
     p {
@@ -31,7 +32,6 @@
     background-color: #b30000;
     color: white;
     border: none;
-    border-radius: 8px;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
@@ -45,10 +45,9 @@
 
 @include respond-to("tablet") {
   .sales-wrapper {
-    padding: 3rem;
 
     .sales-header h2 {
-      font-size: 2rem;
+      font-size: 4rem;
     }
 
     .sales-header p {
@@ -59,8 +58,6 @@
 
 @include respond-to("desktop") {
   .sales-wrapper {
-    padding: 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 100%;
   }
 }
