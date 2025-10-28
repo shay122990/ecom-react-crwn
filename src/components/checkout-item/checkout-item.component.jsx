@@ -10,7 +10,7 @@ import {
 const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
   const dispatch = useDispatch();
-
+  const lineTotal = price * quantity;
   const clearItemHandler = () => dispatch(clearItemFromCart(cartItem));
   const addItemHandler = () => dispatch(addItemToCart(cartItem));
   const removeItemHandler = () => dispatch(removeItemFromCart(cartItem));
@@ -30,7 +30,7 @@ const CheckoutItem = ({ cartItem }) => {
           &#10095;
         </div>
       </span>
-      <span className="price"> {price}</span>
+      <span className="price">${lineTotal}</span>
       <div className="remove-button" onClick={clearItemHandler}>
         &#10005;
       </div>
