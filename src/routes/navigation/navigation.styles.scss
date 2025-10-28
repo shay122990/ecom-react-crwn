@@ -1,4 +1,4 @@
-@import '../../mixins.scss';
+@import "../../mixins.scss";
 
 .navigation {
   height: 70px;
@@ -24,9 +24,9 @@
       cursor: pointer;
       font-size: 14px;
       text-wrap: nowrap;
-      padding: 8px; 
-      
-      &:hover{
+      padding: 8px;
+
+      &:hover {
         color: white;
         background-color: black;
         padding: 8px;
@@ -34,7 +34,7 @@
     }
   }
 
-  @include respond-to('desktop') {
+  @include respond-to("desktop") {
     margin: 20px;
 
     .logo-container .logo {

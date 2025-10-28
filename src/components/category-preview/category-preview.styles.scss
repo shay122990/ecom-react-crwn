@@ -1,38 +1,100 @@
-@import '../../mixins.scss';
+@import "../../mixins.scss";
 
 .category-preview-container {
+  width: min(var(--container), 100%);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-bottom: 30px;
-  width: 100%;
+  position: relative;
+  isolation: isolate;
+  color: white;
+
+  background: linear-gradient(135deg, #0f0f11 0%, #1a1c21 45%, #101014 100%);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.04) 0px,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.04) 0px,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px,
+        transparent 40px
+      );
+    opacity: 0.18;
+    z-index: -1;
+  }
+
+  background-attachment: fixed;
 
   .title {
-    font-size: 28px;
-    margin-bottom: 25px;
-    cursor: pointer;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    margin: 10px 0 28px 0;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ffffff, #586b7d);
+    -webkit-background-clip: text;
+    color: transparent;
+    .chevron-right {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(1px);
+      transition: transform 0.25s ease;
+
+      img {
+        width: 28px;
+        height: 18px;
+        object-fit: contain;
+        filter: brightness(100%);
+      }
+    }
+
+    &:hover .chevron-right {
+      transform: translateX(5px);
+    }
   }
 
   .preview {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 10px;
-  }
-
-}
-@include respond-to('tablet'){
-  .category-preview-container{
-    .preview{
-      column-gap:46px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    justify-items: stretch;
+    .chevron-right {
+      min-width: 0;
+      color: white;
     }
   }
 }
-@include respond-to('desktop'){
-  .category-preview-container{
-    .preview{
-      grid-template-columns: repeat(4,1fr);
-      row-gap:36px;
+
+/* tablet */
+@include respond-to("tablet") {
+  .category-preview-container .preview {
+    gap: 26px;
+  }
+}
+
+/* desktop */
+@include respond-to("desktop") {
+  .category-preview-container {
+    width: 100%;
+    padding: 30px;
+    .preview {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 32px;
     }
   }
-
 }

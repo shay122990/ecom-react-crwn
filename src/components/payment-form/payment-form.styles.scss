@@ -1,51 +1,49 @@
-@import '../../mixins.scss';
+@import "../../mixins.scss";
 
 .payment-form-container {
-    height: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  .form-container {
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  
-    .form-container {
+    align-items: flex-start;
+    gap: 1rem;
+    border: 1px solid black;
+    padding: 4px;
+    h2 {
+      font-size: 16px;
+      margin-bottom: 1rem;
+    }
+
+    .card {
       width: 100%;
-      box-sizing: border-box; 
+      border: 1px solid black;
+    }
+
+    .payment-button {
+      margin-top: auto;
+      width: 100%;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start; 
-      gap: 1rem;
-  
-      h2 {
-        font-size: 16px;
-        margin-bottom: 1rem; 
-      }
-  
-      .card {
-        width: 80%; 
-      }
-  
-      .payment-button {
-        margin-top: auto; 
-        width: 100%; 
-        display: flex;
-      }
     }
   }
-  @include respond-to('tablet'){
-    .payment-form-container {
-        height: 300px;
-        .form-container  {
-            h2{
-                font-size: 20px;
-            }
-          }
-    }
-    
-   
-   
-  }
+}
+// @include respond-to("tablet") {
+//   .payment-form-container {
+//     height: 300px;
+//     .form-container {
+//       h2 {
+//         font-size: 20px;
+//       }
+//     }
+//   }
+// }
 //   @include respond-to('desktop'){
-   
-    
+
 //   }

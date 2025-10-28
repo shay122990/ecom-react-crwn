@@ -26,7 +26,7 @@ const Category = () => {
   }, [category, categoriesMap]);
 
   return (
-    <Fragment>
+    <div className="category-wrapper">
       <h2 className="category-title">{category.toUpperCase()}</h2>
       <Button buttonType="goBack" onClick={goToShop}>
         Go To Shop
@@ -41,7 +41,7 @@ const Category = () => {
             ))}
         </div>
       )}
-    </Fragment>
+    </div>
   );
 };
 

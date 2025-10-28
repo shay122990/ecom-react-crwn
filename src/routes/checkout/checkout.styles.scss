@@ -1,4 +1,4 @@
-@import '../../mixins.scss';
+@import "../../mixins.scss";
 
 .checkout-container {
   width: 100%;
@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   margin: 50px auto 0;
+  padding: 0 10px;
 
   .checkout-header {
     width: 100%;
@@ -20,27 +21,29 @@
   }
   .total {
     display: flex;
-    flex-direction:row;
+    flex-direction: column-reverse;
+    gap: 10px;
     justify-content: space-between;
     width: 100%;
     align-items: center;
+
     margin-top: 30px;
     margin-left: auto;
     font-size: 20px;
   }
 }
-@include respond-to('tablet'){
-  .checkout-container{
+@include respond-to("tablet") {
+  .checkout-container {
     width: 60%;
   }
 }
-@include respond-to('desktop'){
-  .checkout-container{
+@include respond-to("desktop") {
+  .checkout-container {
     width: 55%;
-    .checkout-header{
+    .checkout-header {
       padding: 10px 0;
 
-      .header-block{
+      .header-block {
         width: 23%;
 
         &:last-child {
@@ -48,8 +51,9 @@
         }
       }
     }
-  .total{
-    font-size: 36px;
-   }
+    .total {
+      font-size: 36px;
+      flex-direction: row;
+    }
   }
 }

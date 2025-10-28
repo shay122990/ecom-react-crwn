@@ -1,31 +1,49 @@
-@import '../../mixins.scss';
+@import "../../mixins.scss";
 
 .sales-wrapper {
   width: 100%;
-  padding: 0 1rem 0 1rem;
-  background-color: #ffffff;
+  padding: 2rem 1rem 3rem;
+  background: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
+  isolation: isolate;
+  color: white;
 
   .sales-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
+
+    .eyebrow {
+      display: inline-block;
+      padding: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sale-text);
+      background: transparent;
+      border: 1px solid rgba(244, 104, 104, 0.636);
+      box-shadow: var(--ring);
+    }
 
     h2 {
-      font-size: 1.8rem;
-      color: #b30000;
-      text-transform: uppercase;
-      margin-bottom: 0.25rem;
-      margin-top:0;
+      font-size: 2.2rem;
+      line-height: 1.15;
+      margin: 0.6rem 0 0.25rem 0;
+      color: var(--sale-text);
+      background: linear-gradient(90deg, #fff, #c7d2fe 50%, #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     p {
-      font-size: 0.9rem;
-      color: #333;
+      font-size: 0.95rem;
+      color: var(--sale-muted);
+      margin: 0;
     }
   }
-
   .browse-sale-btn {
     margin-top: 2rem;
     padding: 0.75rem 1.5rem;
@@ -45,13 +63,13 @@
 
 @include respond-to("tablet") {
   .sales-wrapper {
+    padding: 3rem 1.5rem 4rem;
 
     .sales-header h2 {
-      font-size: 4rem;
+      font-size: 3.2rem;
     }
-
     .sales-header p {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
   }
 }

@@ -1,23 +1,33 @@
-@import 'mixins';
-
-
+@import "mixins";
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+:root {
+  --gutter: clamp(12px, 4vw, 24px);
+  --container: 1200px;
+}
 body {
-  margin: 0 0 10rem 0;
-  font-family: "Open Sans Condensed",
-    sans-serif;
-    color: rgb(54, 51, 51);
+  margin: 0;
+  font-family: "Open Sans Condensed", sans-serif;
+  color: rgb(54, 51, 51);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0 20px;
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
 }

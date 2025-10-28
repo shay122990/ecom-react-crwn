@@ -1,4 +1,4 @@
-@import '../../mixins.scss';
+@import "../../mixins.scss";
 
 .button-container {
   min-width: 165px;
@@ -10,7 +10,7 @@
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: 'Open Sans Condensed';
+  font-family: "Open Sans Condensed";
   font-weight: bolder;
   border: none;
   cursor: pointer;
@@ -32,7 +32,7 @@
     &:hover {
       background-color: #357ae8;
       border: none;
-    } 
+    }
   }
 
   &.inverted {
@@ -47,26 +47,32 @@
     }
   }
 
-  &.goBack{
+  &.goBack {
+    background: white;
+    color: black;
     margin-bottom: 10px;
+    &:hover {
+      background-color: black;
+      color: white;
+      border: 1px solid white;
+    }
   }
-  &.payment{
+  &.payment {
     background-color: white;
     color: black;
     border: 1px solid blue;
     font-size: 14px;
-  } 
-  &.signIn-Redirect{
-    margin-top: 30px;
+  }
+  &.signIn-Redirect {
+    margin-top: 10px;
     width: 100%;
     background-color: rgb(247, 108, 108);
   }
 }
-@include respond-to('tablet'){
-  .button-container{
+@include respond-to("tablet") {
+  .button-container {
     font-size: 14px;
     height: 50px;
     width: auto;
   }
 }
-

@@ -8,14 +8,13 @@ const CategoryPreview = ({ title, products }) => {
     <div className="category-preview-container">
       <h2>
         <Link className="title" to={title}>
-          {title.toUpperCase()}
-          <img
-            width="20"
-            height="20"
-            src="https://img.icons8.com/ios-glyphs/30/chevron-right.png"
-            alt="chevron-right"
-            className="chevron-right"
-          />
+          <span className="text">{title.toUpperCase()}</span>
+          <span className="chevron-right">
+            <img
+              src="https://img.icons8.com/ios-glyphs/30/ffffff/chevron-right.png"
+              alt="chevron-right"
+            />
+          </span>
         </Link>
       </h2>
       <div className="preview">

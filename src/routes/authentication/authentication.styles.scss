@@ -3,15 +3,16 @@
 .authentication-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
   padding: 2rem 1rem;
+  gap: 10px;
   width: 100%;
-  max-width: 900px;
+  color: white;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-sizing: border-box;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0f11 0%, #1a1c21 45%, #101014 100%);
 }
 
 @include respond-to("tablet") {
@@ -24,7 +25,8 @@
   .authentication-container {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 50px;
     text-align: left;
   }
 }

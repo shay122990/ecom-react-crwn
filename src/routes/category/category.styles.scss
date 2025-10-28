@@ -1,21 +1,28 @@
-@import '../../mixins.scss';
-
+@import "../../mixins.scss";
+.category-wrapper {
+  padding: 10px;
+  background: black;
+  color: white;
+}
 .category-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
-    row-gap: 10px;
-  }
-  
-  .category-title {
-    font-size: 38px;
-    margin-bottom: 25px;
-    text-align: center;
-  }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  row-gap: 10px;
+}
 
-  @include respond-to('desktop'){
-    .category-container{
-        grid-template-columns: repeat(4,1fr);
-        row-gap:36px;
-    }
-  }  
+.category-title {
+  font-size: 38px;
+  margin-bottom: 25px;
+  text-align: center;
+  background: linear-gradient(90deg, #ffffff, #586b7d);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@include respond-to("desktop") {
+  .category-container {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 36px;
+  }
+}

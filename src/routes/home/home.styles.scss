@@ -1,7 +1,16 @@
-.home-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
+@import "../../mixins.scss";
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  background: black;
+  padding: 30px 10px;
+}
+@include respond-to("desktop") {
+  .home-container {
+    padding: 60px 20px;
+  }
 }
