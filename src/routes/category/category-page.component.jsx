@@ -1,5 +1,5 @@
 import "./category.styles.scss";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import {
