@@ -17,33 +17,6 @@
     object-fit: cover;
   }
 
-  button {
-    width: 90%;
-    opacity: 0.7;
-    position: absolute;
-    display: none;
-    overflow: hidden;
-  }
-
-  button:first-of-type {
-    top: 50%;
-  }
-
-  button:nth-of-type(2) {
-    top: 65%;
-  }
-
-  &:hover {
-    img {
-      opacity: 0.8;
-    }
-
-    button {
-      opacity: 0.85;
-      display: flex;
-    }
-  }
-
   .footer {
     width: 100%;
     height: 50px;
@@ -66,24 +39,24 @@
     img {
       height: 400px;
     }
+
     button {
       width: 98%;
     }
-    button:first-of-type {
-      top: 60%;
-    }
-    button:nth-of-type(2) {
-      top: 72%;
+
+    button.add-to-cart {
+      width: 40%;
     }
 
     .footer {
       height: 70px;
+      gap: 2px;
 
       .name {
-        font-size: 20px;
+        font-size: 14px;
       }
       .price {
-        font-size: 20px;
+        font-size: 14px;
       }
     }
   }

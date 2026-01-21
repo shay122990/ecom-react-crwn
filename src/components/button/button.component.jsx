@@ -7,6 +7,7 @@ const BUTTON_TYPE_CLASSES = {
   goBack: "goBack",
   payment: "payment",
   signInRedirect: "signIn-Redirect",
+  addToCart: "add-to-cart",
 };
 
 const Button = ({ children, buttonType, isLoading, ...otherProps }) => {

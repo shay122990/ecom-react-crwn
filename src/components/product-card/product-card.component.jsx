@@ -30,10 +30,10 @@ const ProductCard = ({ product }) => {
       <div className="footer">
         <span className="name">{name}</span>
         <span className="price">${price}</span>
+        <Button buttonType="addToCart" onClick={addProductToCart}>
+          {buttonText}
+        </Button>
       </div>
-      <Button buttonType="inverted" onClick={addProductToCart}>
-        {buttonText}
-      </Button>
       {showCheckoutButton && (
         <Button buttonType="inverted" onClick={goToCheckout}>
           Go to checkout

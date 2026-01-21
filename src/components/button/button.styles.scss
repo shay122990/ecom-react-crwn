@@ -47,32 +47,57 @@
     }
   }
 
+  &.add-to-cart {
+    width: 40%;
+    min-width: 0;
+    padding: 0 12px;
+    font-size: 10px;
+
+    background-color: black;
+    color: white;
+    border: 1px solid red;
+
+    &:hover {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+
   &.goBack {
     background: white;
     color: black;
     margin-bottom: 10px;
+
     &:hover {
       background-color: black;
       color: white;
       border: 1px solid white;
     }
   }
+
   &.payment {
     background-color: white;
     color: black;
     border: 1px solid blue;
     font-size: 14px;
   }
+
   &.signIn-Redirect {
     margin-top: 10px;
     width: 100%;
     background-color: rgb(247, 108, 108);
   }
 }
+
 @include respond-to("tablet") {
   .button-container {
     font-size: 14px;
     height: 50px;
     width: auto;
+  }
+
+  .button-container.add-to-cart {
+    width: 50%;
   }
 }
