@@ -36,9 +36,11 @@
   }
 
   &.inverted {
+    width: 100%;
     background-color: white;
     color: black;
     border: 1px solid black;
+    margin-bottom: 4px;
 
     &:hover {
       background-color: black;
@@ -99,5 +101,8 @@
 
   .button-container.add-to-cart {
     width: 50%;
+  }
+  .button-container.inverted {
+    font-size: 12px;
   }
 }

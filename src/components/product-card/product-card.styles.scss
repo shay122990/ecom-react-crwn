@@ -37,7 +37,7 @@
 @include respond-to("tablet") {
   .product-card-container {
     img {
-      height: 400px;
+      height: 300px;
     }
 
     button {
@@ -57,6 +57,31 @@
       }
       .price {
         font-size: 14px;
+      }
+    }
+  }
+}
+@include respond-to("desktop") {
+  .product-card-container {
+    padding: 12px;
+
+    button {
+      width: 98%;
+    }
+
+    button.add-to-cart {
+      width: 50%;
+    }
+
+    .footer {
+      height: 70px;
+      gap: 2px;
+
+      .name {
+        font-size: 16px;
+      }
+      .price {
+        font-size: 16px;
       }
     }
   }
